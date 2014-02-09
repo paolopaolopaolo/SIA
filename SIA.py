@@ -23,7 +23,7 @@ def inputwidth(itemWidths=[],totalWidth=0):
 			item=input("Input width: ")
 			if item=="RANDOM":
 				for i in range(0,20):
-					itemWidths.append((randrange(0,totalWidth),i))
+					itemWidths.append((randrange(totalWidth/4,totalWidth),i))
 			try:
 				itemWidths.append((int(item),relev))
 			except TypeError:
@@ -39,8 +39,8 @@ def inputwidth(itemWidths=[],totalWidth=0):
 		
 		if saver.upper()=="Y":
 			
-			if not (os.path.exists('./spencer/')):
-				os.mkdir('./spencer')
+			if not (os.path.exists('./SIA/')):
+				os.mkdir('./SIA')
 			savename=input("Savename?: ")
 			x=open('./spencer/'+savename+'.txt', 'w')
 			text="Total Width: "+str(totalWidth)+"\n"
@@ -76,10 +76,10 @@ def inputwidth(itemWidths=[],totalWidth=0):
 		
 		if saver.upper()=="Y":
 			
-			if not (os.path.exists('./spencer/')):
-				os.mkdir('./spencer')
+			if not (os.path.exists('./SIA/')):
+				os.mkdir('./SIA')
 			savename=input("Savename?: ")
-			x=open('./spencer/'+savename+'.txt', 'w')
+			x=open('./SIA/'+savename+'.txt', 'w')
 			text="Total Width: "+str(totalWidth)+"\n"
 			counter=0
 			for i in itemWidths:
@@ -273,9 +273,11 @@ def loadwidth():
 	if clean is not None:
 		savename=savename[0:-4]
 	try:
-		x=open('./spencer/'+savename+'.txt','r')
-	except AttributeError:
+		x=open('./SIA/'+savename+'.txt','r')
+	except FileNotFoundError:
 		print("No such file!")
+		print("Try again!")
+		loadwidth()
 	find="DEFAULT"
 	totalfind="DEFAULT"
 	itemWidths=[]
