@@ -23,7 +23,7 @@ def inputwidth(itemWidths=[],totalWidth=0):
 			item=input("Input width: ")
 			if item=="RANDOM":
 				for i in range(0,20):
-					itemWidths.append((randrange(0,totalWidth*(3/4)),i))
+					itemWidths.append((randrange(0,totalWidth),i))
 			try:
 				itemWidths.append((int(item),relev))
 			except TypeError:
